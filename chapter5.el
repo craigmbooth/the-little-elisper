@@ -88,8 +88,26 @@
    (t (or (member* a (car ll)) (member* a (cdr ll))))))
 
 
-;;leftmost
+(defun leftmost (ll)
+"Traverse the left-most elements of nested lists, return the first non-nil member"
+  (cond
+   ((null ll) '())
+   ((atom ll) ll)
+   (t (leftmost (car ll)))))
 
-;;eqlist
 
+(defun eqlist (l1 l2)
+
+)
+
+(message "%s" (eqlist '(strawberry ice cream)
+                      '(strawberry ice cream)))            ;t
+(message "%s" (eqlist '(strawberry ice cream)
+                      '(strawberry cream ice)))            ;nil
+(message "%s" (eqlist '(banana ((split)))
+                      '((banana) (split))))                ;nil
+(message "%s" (eqlist '(beef ((sausage)) (and (soda)))
+                      '(beef ((salami)) (and (soda)))))    ;nil
+(message "%s" (eqlist '(beef ((sausage)) (and (soda)))
+                      '(beef ((sausage)) (and (soda)))))   ;nil
 ;;equal

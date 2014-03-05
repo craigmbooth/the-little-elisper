@@ -53,3 +53,7 @@
                                (if (a) ((wood chuck))) could chuck wood)))
 
 (message "%s" (member* 'chips '((potato) (chips ((with) fish) (chips))))) ;t
+
+(message "%s" (leftmost '(((() four)) 17 (seventeen))))              ;nil
+(message "%s" (leftmost '((((hot) (tuna (and))) cheese))))           ;hot
+(message "%s" (leftmost '((potato) (chips ((with) fish) (chips)))))  ;potato
