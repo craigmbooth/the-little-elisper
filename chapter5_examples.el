@@ -57,3 +57,14 @@
 (message "%s" (leftmost '(((() four)) 17 (seventeen))))              ;nil
 (message "%s" (leftmost '((((hot) (tuna (and))) cheese))))           ;hot
 (message "%s" (leftmost '((potato) (chips ((with) fish) (chips)))))  ;potato
+
+(message "%s" (eqlist '(strawberry ice cream)
+                      '(strawberry ice cream)))            ;t
+(message "%s" (eqlist '(strawberry ice cream)
+                      '(strawberry cream ice)))            ;nil
+(message "%s" (eqlist '(banana ((split)))
+                      '((banana) (split))))                ;nil
+(message "%s" (eqlist '(beef ((sausage)) (and (soda)))
+                      '(beef ((salami)) (and (soda)))))    ;nil
+(message "%s" (eqlist '(beef ((sausage)) (and (soda)))
+                      '(beef ((sausage)) (and (soda)))))   ;t

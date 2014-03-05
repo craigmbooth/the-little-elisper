@@ -97,17 +97,31 @@
 
 
 (defun eqlist (l1 l2)
+"Compare two lists for equality"
+   (cond
+    ((and (null l1) (null l2)) t)               ;both null
+    ((or (null l1) (null l2)) nil)              ;one is null
+    ((and (atom (car l1)) (atom (car l2)))      ;both cars are atoms
+         (and (eqan (car l1) (car l2))
+              (eqlist (cdr l1) (cdr l2))))
+    ((or (atom (car l1)) (atom (car l2))) nil)  ;one car is an atom
+    (t (and (eqlist (car l1) (car l2))          ;both are lists
+              (eqlist (cdr l1) (cdr l2))))))
 
-)
 
-(message "%s" (eqlist '(strawberry ice cream)
-                      '(strawberry ice cream)))            ;t
-(message "%s" (eqlist '(strawberry ice cream)
-                      '(strawberry cream ice)))            ;nil
-(message "%s" (eqlist '(banana ((split)))
-                      '((banana) (split))))                ;nil
-(message "%s" (eqlist '(beef ((sausage)) (and (soda)))
-                      '(beef ((salami)) (and (soda)))))    ;nil
-(message "%s" (eqlist '(beef ((sausage)) (and (soda)))
-                      '(beef ((sausage)) (and (soda)))))   ;nil
-;;equal
+(defun equal (s1 s2)
+"Compare two S-expressions for equality"
+  (cond
+   ((and (atom s1) (atom s2)) (eqan s1 s2))
+   ((or (atom s1) (atom s2)) nil)
+   (t (eqlist s1 s2))))
+
+
+(defun eqlist (l1 l2)
+"Compare two lists for equality, using eqlist"
+   (cond
+    ((and (null l1) (null l2)) t)               ;both null
+    ((or (null l1) (null l2)) nil)              ;one is null
+    (t
+       (and (equal (car l1) (car l2))
+            (eqlist (cdr l1) (cdr l2))))))
