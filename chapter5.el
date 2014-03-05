@@ -65,3 +65,31 @@
     ))
    (t
     (cons (subst* new old (car ll)) (subst* new old (cdr ll))))))
+
+
+(defun insertL* (new old ll)
+"Recursively traverse nested lists, adding new to the left of old"
+  (cond
+   ((null ll) nil)
+   ((atom (car ll))
+    (cond
+     ((eq (car ll) old) (cons new (cons old (insertL* new old (cdr ll)))))
+     (t (cons (car ll) (insertL* new old (cdr ll))))
+    ))
+   (t (cons (insertL* new old (car ll)) (insertL* new old (cdr ll))))))
+
+
+(defun member* (a ll)
+"Recursively traverse nested lists and return t if a is a member of any of them"
+  (cond
+   ((null ll) nil)
+   ((atom (car ll))
+     (or (eq a (car ll)) (member* a (cdr ll))))
+   (t (or (member* a (car ll)) (member* a (cdr ll))))))
+
+
+;;leftmost
+
+;;eqlist
+
+;;equal
