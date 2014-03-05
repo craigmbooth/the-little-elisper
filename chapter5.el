@@ -3,15 +3,11 @@
 ;; Examples from the 4th Edition of The Little Schemer translated into
 ;; Emacs lisp.
 ;;
-
-;;add1 and o+ from chapter 4:
-(defun add1 (x) (+ x 1))
-(defun sub1 (x) (- x 1))
-(defun o+ (n m)
-"Add n and m"
-  (cond
-   ((zerop m) n)
-   (t (add1 (o+ n (sub1 m))))))
+;; Translation note:
+;;     --Loads chapter4.el for access to o+ and add1
+;;
+(add-to-list 'load-path ".")
+(load "chapter4.el")
 
 (defun rember* (a ll)
 "Recursively traverse nested lists, removing any element that equals the element a"
