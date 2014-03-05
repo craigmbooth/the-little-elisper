@@ -113,8 +113,6 @@
    (t (pick (cdr lat) (sub1 n)))))
 
 
-
-
 (defun rempick (n lat)
 "Remove the item from lat at position n"
   (cond
@@ -122,11 +120,6 @@
    ((== (sub1 n) 0) (cdr lat))
    (t (cons (car lat)
       (rempick (sub1 n) (cdr lat))))))
-
-
-
-
-
 
 
 (defun no-nums (lat)

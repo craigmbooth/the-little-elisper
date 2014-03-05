@@ -9,6 +9,7 @@
 (add-to-list 'load-path ".")
 (load "chapter4.el")
 
+
 (defun rember* (a ll)
 "Recursively traverse nested lists, removing any element that equals the element a"
   (cond
@@ -23,14 +24,6 @@
           (rember* a (cdr ll)))
    )))
 
-; ((coffee) ((tea)) (and (hick)))
-(message "%s" (rember* 'cup '((coffee) cup ((tea) cup) (and (hick)) cup)))
-
-; (((tomato)) ((bean) (and ((flying)))))
-(message "%s" (rember* 'sauce '(((tomato sauce))
-                                ((bean sauce)
-                                (and ((flying)) sauce)))))
-
 
 (defun insertR* (old new ll)
 "Recursively traverse nested lists, adding new to the right of old"
@@ -42,15 +35,6 @@
            (t (cons (car ll) (insertR* old new (cdr ll))))))
      (t
          (cons (insertR* old new (car ll)) (insertR* old new (cdr ll))))))
-
-;; ((how much (wood)) could ((a (wood) chuck roast)) (((chuck roast)))
-;; (id (a) ((wood chuck roast))) could chuck roast wood)
-(message "%s" (insertR* 'chuck 'roast '((how much (wood))
-                                        could
-                                        ((a (wood) chuck))
-                                        (((chuck)))
-                                        (id (a) ((wood chuck)))
-                                        could chuck wood)))
 
 
 (defun occur* (a ll)
@@ -67,12 +51,17 @@
      (t (o+ (occur* a (car ll)) (occur* a (cdr ll))))
     ))
 
-(message "%s" (occur* 'cc '(cc bb cc bb cc)))             ;3
 
-(message "%s" (occur* 'banana '((banana)                  ;5
-                                (split ((((banana ice)))
-                                        (cream (banana))
-                                        sherbet))
-                                (banana)
-                                (bread)
-                                (banana brandy))))
+(defun subst* (new old ll)
+"Recursively traverse nested lists, replacing old with new"
+  (cond
+   ((null ll) '())
+   ((atom (car ll))
+    (cond
+     ((eq (car ll) old)
+         (cons new (subst* new old (cdr ll))))
+     (t
+         (cons (car ll) (subst* new old (cdr ll))))
+    ))
+   (t
+    (cons (subst* new old (car ll)) (subst* new old (cdr ll))))))
