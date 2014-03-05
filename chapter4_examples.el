@@ -1,10 +1,11 @@
-;; Chapter 4. Numbers Games (Exmaples)
+;; Chapter 4. Numbers Games (Examples)
 ;;
 ;; Examples from the 4th Edition of The Little Schemer translated into
 ;; Emacs lisp.
 ;;
 ;; evalling this buffer will print the results from most of the examples
-;; in the text to the screen.
+;; in the text to the *Messages* buffer in Emacs
+;;
 (add-to-list 'load-path ".")
 (load "chapter4.el")
 
