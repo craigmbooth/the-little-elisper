@@ -129,8 +129,6 @@
    ((numberp (car lat)) (no-nums (cdr lat)))
    (t (cons (car lat) (no-nums (cdr lat))))))
 
-(message "%s" (no-nums '(5 pears 6 prunes 9 dates)))      ; (pears prunes dates)
-
 
 (defun all-nums (lat)
 "Extract a tup from a lat by extracting all the numbers"
@@ -138,8 +136,6 @@
    ((null lat) '())
    ((numberp (car lat)) (cons (car lat) (all-nums (cdr lat))))
    (t (all-nums (cdr lat)))))
-
-(message "%s" (all-nums '(5 pears 6 prunes 9 dates)))     ; (5 6 9)
 
 
 (defun eqan (a1 a2)
@@ -149,11 +145,6 @@
    ((numberp a1) nil)
    ((numberp a2) nil)
    (t (eq a1 a2))))
-
-(message "%s" (eqan 1 1))
-(message "%s" (eqan 1 2))
-(message "%s" (eqan 3 'r))
-(message "%s" (eqan 1 '3))
 
 
 (defun occur (a lat)
@@ -166,11 +157,10 @@
       (occur a (cdr lat)))))
 
 
-
-
 (defun one (n)
 "true if n is 1, false otherwise"
   (eq n 1))
+
 
 (defun rempick (n lat)
 "Remove the item from lat at position n, using function one"

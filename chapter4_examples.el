@@ -53,3 +53,12 @@
 (message "%s" (occur 'cc '(cc bb cc bb cc)))       ;3
 
 (message "%s" (rempick 3 '(hotdogs with hot mustard)))    ; hotdogs with mustard
+
+(message "%s" (no-nums '(5 pears 6 prunes 9 dates)))      ; (pears prunes dates)
+
+(message "%s" (all-nums '(5 pears 6 prunes 9 dates)))     ; (5 6 9)
+
+(message "%s" (eqan 1 1))
+(message "%s" (eqan 1 2))
+(message "%s" (eqan 3 'r))
+(message "%s" (eqan 1 '3))
