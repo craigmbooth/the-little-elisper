@@ -120,12 +120,30 @@
 "a finite function is a list of pairs where the first elements are a set"
   (setp (firsts rel)))
 
-;;(defun revrel (rel)
-;;"reverse the order of the pairs in a relation"
-;;)
 
-;;revpair
+(defun revrel (rel)
+"reverse the order of the pairs in a relation"
+   (cond
+    ((null rel) '())
+    (t (cons
+          (build
+             (second (car rel))
+             (first (car rel)))
+          (revrel (cdr rel))))))
 
-;;fullfun
 
-;;one-to-one
+(defun revpair (pair)
+"Reverse the order of elements in a pair"
+  (build (second pair) (first pair)))
+
+
+(defun revrel (rel)
+"reverse the order of the pairs in a relation, using revpair"
+  (cond
+   ((null rel) '())
+   (t (cons (revpair (car rel)) (revrel (cdr rel))))))
+
+
+(defun one-to-onep (rel)
+"Return t if all of the second elements of the pairs are a set, else nil"
+  (fun (revrel rel)))

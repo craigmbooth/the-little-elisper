@@ -57,3 +57,9 @@
 (message "%s" (fun '((4 3) (4 2) (7 6) (6 2) (3 4))))     ;nil
 (message "%s" (fun '((8 3) (4 2) (7 6) (6 2) (3 4))))     ;f
 (message "%s" (fun '((d 4) (b 0) (b 9) (e 5) (g 4))))     ;nil
+
+;;((a 8) (pie pumpkin) (sick got))
+(message "%s" (revrel '((8 a) (pumpkin pie) (got sick))))
+
+(message "%s" (one-to-onep '((8 3) (4 8) (7 6) (6 2) (3 4))))                 ;t
+(message "%s" (one-to-onep '((grape raisin) (plum prune) (stewed prune))))  ;nil
