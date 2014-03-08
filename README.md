@@ -40,3 +40,7 @@ When recursing over two lists there are four termination conditions to consider.
    * The first list is null
    * The second list is null
    * Neither list is null
+
+### Chapter 7
+
+A finite function is a list of pairs in which no first element of any pair is the same as any other first element.
