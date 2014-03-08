@@ -57,7 +57,8 @@
 "Return the intersection of the sets"
   (cond
    ((null set1) '())
-   ((member (car set1) set2) (cons (car set1) (intersect (cdr set1) set2)))
+   ((member (car set1) set2)
+        (cons (car set1) (intersect (cdr set1) set2)))
    (t (intersect (cdr set1) set2))))
 
 
@@ -65,24 +66,63 @@
 "Return the union of the sets"
    (cond
     ((null set1) set2)
-    ((member (car set1) set2) (union (cdr set1) set2))
+    ((member (car set1) set2)
+         (union (cdr set1) set2))
     (t (cons (car set1) (union (cdr set1) set2)))))
 
-;;diff
 
-;;intersectall
+(defun diff (set1 set2)
+"Return all the members of set1 that are not in set2"
+   (cond
+     ((null set1) '())
+     ((member (car set1) set2) (diff (cdr set1) set2))
+     (t (cons (car set1) (diff (cdr set1) set2)))))
 
-;;(defun intersectall (l-set)
-;;"Take a list of sets as an argument, return values that exist in all of the sets"
+
+(defun intersectall (l-set)
+"Take a list of sets as an argument, return values that exist in all of the sets"
+  (cond
+   ((null (cdr l-set)) (car l-set))
+   (t (intersect (car l-set)
+                 (intersectall (cdr l-set))))))
+
+
+(defun a-pair (l)
+  (cond
+   ((null l) nil)
+   ((atom l) nil)
+   ((null (cdr l)) nil)
+   ((null (cdr (cdr l))) t)
+   (t nil)))
+
+
+(defun first (l)
+"Extract the first element of a list"
+  (car l))
+
+
+(defun second (l)
+"Extract the second element of a list"
+  (car (cdr l)))
+
+
+(defun third (l)
+"Extract the third element of a list"
+  (car (cdr (cdr l))))
+
+
+(defun build (s1 s2)
+"Make a pair from two S-expressions"
+  (cons s1 (cons s2 '())))
+
+
+(defun fun (rel)
+"a finite function is a list of pairs where the first elements are a set"
+  (setp (firsts rel)))
+
+;;(defun revrel (rel)
+;;"reverse the order of the pairs in a relation"
 ;;)
-
-;;a-pair
-
-;;first, second and build
-
-;;fun?
-
-;;revrel
 
 ;;revpair
 

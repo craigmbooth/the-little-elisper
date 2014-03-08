@@ -39,3 +39,21 @@
 ;;(stewed tomatoes casserole macaroni and cheese)
 (message "%s" (union '(stewed tomatoes and macaroni casserole)
                      '(macaroni and cheese)))
+
+(message "%s" (diff '(stewed tomatoes and macaroni casserole)
+                     '(macaroni and cheese))) ;;(stewed tomatoes casserole)
+
+(message "%s" (intersectall '((a b c) (c a de) (e f g h a b))))      ;(a)
+
+(message "%s" (intersectall '((6 pears and)
+                              (3 peaches and 6 peppers)
+                              (8 pears and 6 plums)
+                              (and 6 prunes with some apples))))     ;(6 and)
+
+(message "%s" (a-pair '(pair pear)))    ;t
+(message "%s" (a-pair '(3 7)))          ;t
+(message "%s" (a-pair '(a (pair))))     ;t
+
+(message "%s" (fun '((4 3) (4 2) (7 6) (6 2) (3 4))))     ;nil
+(message "%s" (fun '((8 3) (4 2) (7 6) (6 2) (3 4))))     ;f
+(message "%s" (fun '((d 4) (b 0) (b 9) (e 5) (g 4))))     ;nil
