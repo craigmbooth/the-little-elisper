@@ -30,6 +30,14 @@ A few general notes on translating the 'Little Scheme' language into Emacs LISP:
    1. ... and Again, and Again, and Again, ...
    1. What Is the Value of All of This?
 
+## The Five Rules
+
+   1. *The law of car*: The primitive ``car`` is defined only for non-empty lists
+   1. *The law of cdr*: The primitive ``cdr`` is defined only for non-empty lists.  The ``cdr`` of a non-empty list is always another list.
+   1. *The law of cons*: The primitive ``cons`` takes two arguments.  The second argument to ``cons`` must be a list, and the result is a list.
+   1. *The law of nullp*: The primitive ``nullp`` is defined only for lists
+   1. *The law of eq*: The primitive ``eq`` takes two arguments.  Each must be a non-numeric atom.
+
 ## Chapter Notes
 
 ### Chapter 5
