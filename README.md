@@ -9,6 +9,7 @@ A few general notes on translating the 'Little Scheme' language into Emacs LISP:
    * Bools in emacs lisp are ``nil`` and ``t`` rather than ``#f`` and ``#t``
    * Use defun instead of ``(define (lambda ()))``
    * In ``cond`` statements, don't use ``else``, instead make the final question in a cond something else that always evaluates to true, i.e. ``t``
+   * Need to use ``funcall`` when passing in functions as first class arguments, as [here](http://stackoverflow.com/questions/213267/how-do-i-pass-a-function-as-a-parameter-to-in-elisp)
    * I have added docstrings to all functions that are longer than a single line.
 
 ## Chapters
